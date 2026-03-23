@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+
+    <script>
+        function getWeekNumber(date = new Date()) {
+            const tempDate = new Date(date.getTime());
+            tempDate.setDate(tempDate.getDate() + 4 - (tempDate.getDay() || 7));
+            const yearStart = new Date(tempDate.getFullYear(), 0, 1);
+            const weekNo = Math.ceil((((tempDate - yearStart) / 86400000) + 1) / 7);
+            return weekNo + 1;
+        }
+
+        function performRedirect() {
+            const currentWeekUrl = `https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-home-and-church-old-testament-2026/${getWeekNumber()}?lang=eng`
+
+            window.location.replace(currentWeekUrl);
+        }
+
+        window.onload = performRedirect;
+    </script>
+</head>
+<body>
+    <p>Determining your destination... If you are not redirected, 
+       <a href="https://www.google.com">click here</a>.</p>
+</body>
+</html>
